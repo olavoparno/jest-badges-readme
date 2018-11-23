@@ -1,0 +1,48 @@
+{
+  "author": "Olavo Parno",
+  "person": {
+    "name": "Olavo Parno",
+    "email": "olavoparno@gmail.com",
+    "url": "https://github.com/olavoparno"
+  },
+  "bin": {
+    "jest-badges-readme": "cli.js"
+  },
+  "dependencies": {
+    "replace-in-file": "^3.4.2"
+  },
+  "deprecated": false,
+  "description": "Creates a group of coverage badges from Jest into your README",
+  "devDependencies": {
+    "husky": "0.13.3",
+    "semantic-release": "^15.12.1",
+    "standard": "10.0.2",
+    "validate-commit-msg": "2.12.1"
+  },
+  "engines": {
+    "node": ">=6.11",
+    "npm": ">=5.3"
+  },
+  "files": [
+    "cli.js"
+  ],
+  "keywords": [
+    "coverage",
+    "badge",
+    "jest",
+    "istanbul",
+    "readme"
+  ],
+  "license": "MIT",
+  "main": "cli.js",
+  "name": "@olavoparno/jest-badges-readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.9",
+  "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/olavoparno/jest-badges-readme.git"
+  }
+}
