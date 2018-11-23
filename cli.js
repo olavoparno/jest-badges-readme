@@ -3,10 +3,8 @@
 const fs = require('fs')
 const replace = require('replace-in-file')
 
-(function() {
-  fs.copyFileSync('./README-template.md', 'README.md');
-  console.log('README.md created!');
-})();
+fs.copyFileSync('./README-template.md', 'README.md');
+   console.log('README.md created!');
 
 const getColour = coverage => {
   if (coverage < 80) {
