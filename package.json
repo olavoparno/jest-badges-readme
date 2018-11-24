@@ -30,7 +30,9 @@
     "badges",
     "jest",
     "istanbul",
-    "readme"
+    "readme",
+    "typescript",
+    "tslint"
   ],
   "license": "MIT",
   "main": "lib/index.js",
@@ -48,7 +50,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "version": "1.1.5",
+  "version": "1.1.6",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
