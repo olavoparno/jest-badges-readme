@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import Creator from './helper'
+import Creator from './helper';
 
-const creator = new Creator()
+const creator = new Creator();
 
 if (creator.createReadme()) {
-  creator.insertBadges()
+  creator.insertBadges();
 }

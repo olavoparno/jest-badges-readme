@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import * as fs from 'fs';
 
 interface IReport {
   [total: string]: any;
@@ -10,22 +10,22 @@ export default class Helper {
   public createReadme = (path: string = './README-template.md'): boolean => {
     if (fs.existsSync(path)) {
       fs.copyFileSync(path, 'README.md');
-      console.log("\x1b[1m\x1b[32m", 'Template read succesfully. \'README.md\' created!');
-      return true
+      console.log('\x1b[1m\x1b[32m', "Template read succesfully. 'README.md' created!");
+      return true;
     } else {
-      console.log("\x1b[1m\x1b[31m", 'Error: \'README-template.md\' file not not found.');
-      console.log("\x1b[1m\x1b[32m", 'You must have a README-template.md created. Please read the documentation.');
-      return false
+      console.log('\x1b[1m\x1b[31m', "Error: 'README-template.md' file not not found.");
+      console.log('\x1b[1m\x1b[32m', 'You must have a README-template.md created. Please read the documentation.');
+      return false;
     }
-  }
+  };
 
   public insertBadges = (path: string = './coverage/coverage-summary.json'): boolean => {
-    let returnValue: boolean = false
+    let returnValue: boolean = false;
     if (fs.existsSync(path)) {
-      const coverageFile = fs.readFileSync(path, 'utf8')
+      const coverageFile = fs.readFileSync(path, 'utf8');
       if (!coverageFile.length) {
         console.log('\x1b[1m\x1b[31m', 'Malformed coverage report. Please run Jest again');
-        return false
+        return false;
       }
       const report: IReport = JSON.parse(coverageFile);
       const readmeFile: string = './README.md';
@@ -33,32 +33,32 @@ export default class Helper {
       this.reportKeys.forEach(key => {
         const url = this.getBadge(report, key);
         if (url.length) {
-          const pattern = "#" + key + "#";
+          const pattern = '#' + key + '#';
           readmeFileData = readmeFileData.replace(pattern, url);
-          console.log('\x1b[1m\x1b[32m', 'Badge for', key, 'updated with:', url)
-          returnValue = true
+          console.log('\x1b[1m\x1b[32m', 'Badge for', key, 'updated with:', url);
+          returnValue = true;
           fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
         } else {
-          returnValue = false
+          returnValue = false;
         }
-      })
+      });
     } else {
       console.log('\x1b[1m\x1b[31m', 'Error: ' + path + ' file not found.');
       console.log('\x1b[1m\x1b[32m', 'Do you have Jest installed? If so, is it properly configured?');
-      returnValue = false
+      returnValue = false;
     }
-    return returnValue
-  }
-  
+    return returnValue;
+  };
+
   private getBadge = (report: IReport, key: string): string => {
     if (!(report && report.total && report.total[key])) {
       console.log('\x1b[1m\x1b[31m', 'Malformed coverage report for the key ' + key + '. Please run Jest again.');
-      return ''
+      return '';
     }
     const coverage = report.total[key].pct;
     const colour = this.getColour(coverage);
     return `https://img.shields.io/badge/Coverage-${coverage}${encodeURI('%')}-${colour}.svg`;
-  }
+  };
 
   private getColour = (coverage: number): string => {
     if (coverage < 80) {
@@ -68,5 +68,5 @@ export default class Helper {
       return 'yellow';
     }
     return 'brightgreen';
-  }
+  };
 }
