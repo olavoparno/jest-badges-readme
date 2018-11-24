@@ -14,30 +14,39 @@
   "deprecated": false,
   "description": "Creates a group of coverage badges from Jest into your README.",
   "devDependencies": {
-    "husky": "0.13.3",
-    "semantic-release": "^15.12.1",
-    "standard": "10.0.2",
-    "validate-commit-msg": "2.12.1"
+    "@types/jest": "^23.3.9",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.2",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "typescript": "^3.1.6"
   },
   "engines": {
     "node": ">=6.11",
     "npm": ">=5.3"
   },
-  "files": [
-    "cli.js"
-  ],
   "keywords": [
     "coverage",
-    "badge",
+    "badges",
     "jest",
     "istanbul",
     "readme"
   ],
   "license": "MIT",
-  "main": "cli.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "name": "@olavoparno/jest-badges-readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "version": "1.1.2",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",

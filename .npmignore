@@ -1,0 +1,8 @@
+src
+tsconfig.json
+tslint.json
+.prettierrc
+README.md
+LICENCE
+.gitignore
+jestconfig.json
