@@ -12,7 +12,7 @@
     "replace-in-file": "^3.4.2"
   },
   "deprecated": false,
-  "description": "Creates a group of coverage badges from Jest into your README",
+  "description": "Creates a group of coverage badges from Jest into your README.",
   "devDependencies": {
     "husky": "0.13.3",
     "semantic-release": "^15.12.1",
@@ -39,7 +39,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.1.1",
+  "version": "1.1.2",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
