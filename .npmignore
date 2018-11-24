@@ -2,7 +2,8 @@ src
 tsconfig.json
 tslint.json
 .prettierrc
-README.md
+README-template.md
 LICENCE
 .gitignore
 jestconfig.json
+coverage

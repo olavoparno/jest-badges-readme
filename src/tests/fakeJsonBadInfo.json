@@ -1,0 +1,4 @@
+{"total": {"badInfo":{"total":85,"covered":74,"skipped":0,"pct":87.06},"badInfo":{"total":85,"covered":74,"skipped":0,"pct":87.06},"badInfo":{"total":12,"covered":12,"skipped":0,"pct":100},"badInfo":{"total":32,"covered":27,"skipped":0,"pct":84.38}}
+,"D:\\Projects\\jest-badges-readme\\lib\\helper\\index.js": {"lines":{"total":42,"covered":33,"skipped":0,"pct":78.57},"functions":{"total":6,"covered":6,"skipped":0,"pct":100},"statements":{"total":42,"covered":33,"skipped":0,"pct":78.57},"branches":{"total":15,"covered":11,"skipped":0,"pct":73.33}}
+,"D:\\Projects\\jest-badges-readme\\src\\helper\\index.ts": {"lines":{"total":43,"covered":41,"skipped":0,"pct":95.35},"functions":{"total":6,"covered":6,"skipped":0,"pct":100},"statements":{"total":43,"covered":41,"skipped":0,"pct":95.35},"branches":{"total":17,"covered":16,"skipped":0,"pct":94.12}}
+}

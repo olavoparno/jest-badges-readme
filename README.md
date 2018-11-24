@@ -2,6 +2,10 @@
 
 ### Creates Jest Coverage badges for your README.md file.
 
+| Statements | Branches | Functions | Lines | Built By | We Love |
+| -----------|----------|-----------|-------| -------- | ------- |
+| ![Statements](https://img.shields.io/badge/Coverage-80.79%25-yellow.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-89.47%25-yellow.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-70%25-red.svg "Make me better!") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+
 ### TL;DR
 
 - To be short, all it does is: **Creates your README.md dinamically with your Jest Coverage Badges on top of your README-template.md file.**
@@ -53,11 +57,7 @@ Example of _*README-template.md*_:
   | ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
 ```
 
-Which would result in:
-
-| Statements | Branches | Functions | Lines | Built By | We Love |
-| -----------|----------|-----------|-------| -------- | ------- |
-| ![Statements](https://img.shields.io/badge/Coverage-90.27%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-63.46%25-red.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-72.55%25-red.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-90.85%25-brightgreen.svg "Make me better!") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+Which results in in the report above!
 
 ### Summarizing it all
 
