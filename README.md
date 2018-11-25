@@ -8,7 +8,7 @@
 
 | Build Status | Built By | We Love |
 | ------------ | -------- | ------- |
-| ![BuildStatus](https://img.shields.io/badge/Building-Passing-brightred.svg "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+| ![BuildStatus](https://img.shields.io/badge/Building-Passing-brightgreen.svg "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
 
 ### Are you in need of a local building badge? Add these NPM scripts in order to manage your local building badges as well:+
 
