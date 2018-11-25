@@ -49,7 +49,7 @@
   3. '#functions#'
   4. '#lines#'
 
-### Are you in need of a local building badge? Add these NPM scripts in order to manage your local building badges as well:+
+### Are you in need of a local building badge? Add these NPM scripts in order to manage your local building badges as well:
 
 ```json
   "prebuild": "echo false > .buildstatus",

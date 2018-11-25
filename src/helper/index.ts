@@ -1,12 +1,10 @@
 import * as fs from 'fs';
 
-interface IReport {
-  [total: string]: any;
-}
+import { badgeHashs } from './constants'
+import { IReport } from './interface'
 
 export default class Helper {
-  private reportKeys = ['lines', 'statements', 'functions', 'branches'];
-
+  private reportKeys: string[] = badgeHashs.jest;
   
   public createReadme = (path: string = './README-template.md'): boolean => {
     if (fs.existsSync(path)) {
@@ -30,11 +28,11 @@ export default class Helper {
       }
       const report: IReport = JSON.parse(coverageFile);
       const readmeFile: string = './README.md';
-      let readmeFileData = fs.readFileSync(readmeFile, 'utf8');
+      let readmeFileData: string = fs.readFileSync(readmeFile, 'utf8');
       this.reportKeys.forEach(key => {
-        const url = this.getBadge(report, key);
+        const url: string = this.getBadge(report, key);
         if (url.length) {
-          const pattern = '#' + key + '#';
+          const pattern: string = '#' + key + '#';
           readmeFileData = readmeFileData.replace(pattern, url);
           console.log('\x1b[1m\x1b[32m', 'Badge for', key, 'updated with:', url);
           returnValue = true;
@@ -56,7 +54,7 @@ export default class Helper {
     let url: string = 'https://img.shields.io/badge/Building-Passing-brightgreen.svg'
     let returnValue: boolean = false
     const readmeFile: string = './README.md';
-    const pattern = '#buildstatus#';
+    const pattern: string = `#${badgeHashs.build}#`;
     if (fs.existsSync(path)) {
       let readmeFileData = fs.readFileSync(readmeFile, 'utf8');
       const buildStatus = fs.readFileSync(path, 'utf8')
@@ -81,7 +79,7 @@ export default class Helper {
       console.log('\x1b[1m\x1b[31m', 'Malformed coverage report for the key ' + key + '. Please run Jest again.');
       return '';
     }
-    const coverage = report.total[key].pct;
+    const coverage: number = report.total[key].pct;
     const colour = this.getColour(coverage);
     return `https://img.shields.io/badge/Coverage-${coverage}${encodeURI('%')}-${colour}.svg`;
   };
