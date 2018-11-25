@@ -2,9 +2,22 @@
 
 ### Creates Jest Coverage badges for your README.md file.
 
-| Statements | Branches | Functions | Lines | Built By | We Love |
-| -----------|----------|-----------|-------| -------- | ------- |
-| ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+| Statements | Branches | Functions | Lines |
+| -----------|----------|-----------|-------|
+| ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") |
+
+| Build Status | Built By | We Love |
+| ------------ | -------- | ------- |
+| ![BuildStatus](#buildstatus# "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+
+### Are you in need of a local building badge? Add these NPM scripts in order to manage your local building badges as well:+
+
+```json
+  "prebuild": "echo false > .buildstatus",
+  "postbuild": "echo true > .buildstatus"
+```
+
+- This is going to create a file called _*.buildstatus*_ in your root project telling this tool if your build is successful or not with either true or false. Simply put.
 
 ### TL;DR
 

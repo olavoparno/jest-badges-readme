@@ -7,6 +7,7 @@ interface IReport {
 export default class Helper {
   private reportKeys = ['lines', 'statements', 'functions', 'branches'];
 
+  
   public createReadme = (path: string = './README-template.md'): boolean => {
     if (fs.existsSync(path)) {
       fs.copyFileSync(path, 'README.md');
@@ -18,7 +19,7 @@ export default class Helper {
       return false;
     }
   };
-
+  
   public insertBadges = (path: string = './coverage/coverage-summary.json'): boolean => {
     let returnValue: boolean = false;
     if (fs.existsSync(path)) {
@@ -41,7 +42,8 @@ export default class Helper {
         } else {
           returnValue = false;
         }
-      });
+      })
+      this.getBuildStatus()
     } else {
       console.log('\x1b[1m\x1b[31m', 'Error: ' + path + ' file not found.');
       console.log('\x1b[1m\x1b[32m', 'Do you have Jest installed? If so, is it properly configured?');
@@ -49,6 +51,30 @@ export default class Helper {
     }
     return returnValue;
   };
+  
+  public getBuildStatus = (path: string = './.buildstatus'): boolean => {
+    let url: string = 'https://img.shields.io/badge/Building-Passing-brightgreen.svg'
+    let returnValue: boolean = false
+    const readmeFile: string = './README.md';
+    const pattern = '#buildstatus#';
+    if (fs.existsSync(path)) {
+      let readmeFileData = fs.readFileSync(readmeFile, 'utf8');
+      const buildStatus = fs.readFileSync(path, 'utf8')
+      if (buildStatus === 'true') {
+        url = 'https://img.shields.io/badge/Building-Passing-brightgreen.svg'
+        returnValue = true
+      } else if (buildStatus === 'false') {
+        url = 'https://img.shields.io/badge/Building-Failing-brightred.svg'
+        returnValue = false
+      }
+      readmeFileData = readmeFileData.replace(pattern, url)
+      fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
+      console.log('\x1b[1m\x1b[32m', 'Writing building status', buildStatus, 'with URL:', url);
+    } else {
+      returnValue = false
+    }
+    return returnValue
+  }
 
   private getBadge = (report: IReport, key: string): string => {
     if (!(report && report.total && report.total[key])) {
