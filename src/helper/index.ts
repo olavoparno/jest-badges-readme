@@ -3,22 +3,25 @@ import * as fs from 'fs';
 import { badgeHashs } from './constants'
 import { IReport } from './interface'
 
+const readmeFile: string = badgeHashs.readmeFile;
+const readmeTemplateFile: string = badgeHashs.readmeTemplateFile;
+
 export default class Helper {
-  private reportKeys: string[] = badgeHashs.jest;
+  private reportKeys: string[] = badgeHashs.hashes.jest;
   
-  public createReadme = (path: string = './README-template.md'): boolean => {
+  public createReadme = (path: string = readmeTemplateFile): boolean => {
     if (fs.existsSync(path)) {
-      fs.copyFileSync(path, 'README.md');
-      console.log('\x1b[1m\x1b[32m', "Template read succesfully. 'README.md' created!");
+      fs.copyFileSync(path, readmeFile);
+      console.log('\x1b[1m\x1b[32m', `Template read succesfully. ${readmeFile} created!`);
       return true;
     } else {
-      console.log('\x1b[1m\x1b[31m', "Error: 'README-template.md' file not not found.");
-      console.log('\x1b[1m\x1b[32m', 'You must have a README-template.md created. Please read the documentation.');
+      console.log('\x1b[1m\x1b[31m', `Error: ${readmeTemplateFile} file not not found.`);
+      console.log('\x1b[1m\x1b[32m', `You must have a ${readmeTemplateFile} created. Please read the documentation.`);
       return false;
     }
   };
   
-  public insertBadges = (path: string = './coverage/coverage-summary.json'): boolean => {
+  public insertBadges = (path: string = badgeHashs.jsonCoverageFile): boolean => {
     let returnValue: boolean = false;
     if (fs.existsSync(path)) {
       const coverageFile = fs.readFileSync(path, 'utf8');
@@ -27,7 +30,6 @@ export default class Helper {
         return false;
       }
       const report: IReport = JSON.parse(coverageFile);
-      const readmeFile: string = './README.md';
       let readmeFileData: string = fs.readFileSync(readmeFile, 'utf8');
       this.reportKeys.forEach(key => {
         const url: string = this.getBadge(report, key);
@@ -50,19 +52,18 @@ export default class Helper {
     return returnValue;
   };
   
-  public getBuildStatus = (path: string = './.buildstatus'): boolean => {
-    let url: string = 'https://img.shields.io/badge/Building-Passing-brightgreen.svg'
+  public getBuildStatus = (path: string = badgeHashs.buildFile): boolean => {
+    let url: string = badgeHashs.getBuildUrl('Build', 'Passing', 'brightgreen');
     let returnValue: boolean = false
-    const readmeFile: string = './README.md';
-    const pattern: string = `#${badgeHashs.build}#`;
+    const pattern: string = `#${badgeHashs.hashes.build}#`;
     if (fs.existsSync(path)) {
       let readmeFileData = fs.readFileSync(readmeFile, 'utf8');
       const buildStatus = fs.readFileSync(path, 'utf8')
       if (buildStatus === 'true') {
-        url = 'https://img.shields.io/badge/Building-Passing-brightgreen.svg'
+        url = badgeHashs.getBuildUrl('Build', 'Passing', 'brightgreen');
         returnValue = true
       } else if (buildStatus === 'false') {
-        url = 'https://img.shields.io/badge/Building-Failing-brightred.svg'
+        url = badgeHashs.getBuildUrl('Build', 'Failing', 'brightred');
         returnValue = false
       }
       readmeFileData = readmeFileData.replace(pattern, url)
@@ -80,11 +81,11 @@ export default class Helper {
       return '';
     }
     const coverage: number = report.total[key].pct;
-    const colour = this.getColour(coverage);
-    return `https://img.shields.io/badge/Coverage-${coverage}${encodeURI('%')}-${colour}.svg`;
+    const color = this.getColor(coverage);
+    return badgeHashs.getCoverageUrl(coverage, color)
   };
 
-  private getColour = (coverage: number): string => {
+  private getColor = (coverage: number): string => {
     if (coverage < 80) {
       return 'red';
     }
