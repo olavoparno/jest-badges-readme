@@ -59,10 +59,10 @@ export default class Helper {
     if (fs.existsSync(path)) {
       let readmeFileData = fs.readFileSync(readmeFile, 'utf8');
       const buildStatus = fs.readFileSync(path, 'utf8')
-      if (buildStatus === 'true') {
+      if (buildStatus === 'ok') {
         url = badgeHashs.getBuildUrl('Build', 'Passing', 'brightgreen');
         returnValue = true
-      } else if (buildStatus === 'false') {
+      } else if (buildStatus === 'nok') {
         url = badgeHashs.getBuildUrl('Build', 'Failing', 'brightred');
         returnValue = false
       }

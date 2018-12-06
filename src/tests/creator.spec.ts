@@ -29,20 +29,6 @@ describe('Badge Maker', () => {
     falseBuildStatus = 'src/tests/mock/.falseBuildStatus'
     fakeBuildStatus = './.FAKEBUILD'
   });
-  describe('Testing building', () => {
-    test('check build status failing', () => {
-      expect(creator.getBuildStatus(falseBuildStatus)).toBeFalsy()
-    })
-    test('check build status nonExistent', () => {
-      expect(creator.getBuildStatus(fakeBuildStatus)).toBeFalsy()
-    })
-    test('check build status passing', () => {
-      expect(creator.getBuildStatus(trueBuildStatus)).toBeTruthy()
-    })
-    afterAll(() => {
-      creator.createReadme(readmeTemplateFile)
-    })
-  })
   test('checks README.md file creation', () => {
     expect(creator.createReadme(readmeTemplateFile)).toBeTruthy();
     expect(fs.existsSync(readmeFile)).toBeTruthy()
@@ -85,4 +71,18 @@ describe('Badge Maker', () => {
       });
     });
   });
+  describe('Testing building', () => {
+    test('check build status failing', () => {
+      expect(creator.getBuildStatus(falseBuildStatus)).toBeFalsy()
+    })
+    test('check build status nonExistent', () => {
+      expect(creator.getBuildStatus(fakeBuildStatus)).toBeFalsy()
+    })
+    test('check build status passing', () => {
+      expect(creator.getBuildStatus(trueBuildStatus)).toBeTruthy()
+    })
+    afterAll(() => {
+      creator.createReadme(readmeTemplateFile)
+    })
+  })
 });

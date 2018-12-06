@@ -46,8 +46,8 @@
   "scripts": {
     "test": "jest --config jestconfig.json && node lib/index.js || true",
     "test:coverage": "npm run test --coverage",
-    "prebuild": "echo false > .buildstatus",
-    "postbuild": "echo true > .buildstatus",
+    "prebuild": "echo nok > .buildstatus",
+    "postbuild": "echo ok > .buildstatus",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
@@ -57,7 +57,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "version": "1.2.4",
+  "version": "1.2.5",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
