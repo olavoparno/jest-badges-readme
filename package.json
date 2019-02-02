@@ -12,14 +12,14 @@
   "deprecated": false,
   "description": "Creates a group of coverage badges from Jest into your README.",
   "devDependencies": {
-    "@types/jest": "^23.3.9",
-    "@types/node": "^10.12.10",
-    "jest": "^23.6.0",
-    "prettier": "^1.15.2",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.21",
+    "jest": "^24.0.0",
+    "prettier": "^1.16.3",
     "ts-jest": "^23.10.5",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.16.0",
-    "typescript": "^3.1.6"
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.3.1"
   },
   "engines": {
     "node": ">=6.11",
@@ -57,7 +57,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "version": "1.2.5",
+  "version": "1.2.6",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
