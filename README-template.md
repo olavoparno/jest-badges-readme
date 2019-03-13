@@ -85,20 +85,3 @@ Which results in in the report above!
     ```json
       "make-readme": "npm run test:coverage && jest-badges-readme"
     ```
-
-### Using as a part of your githooks
-  If you want to have this run on the precommit hook and update the commit in place, just install husky and add the `precommit` script to your package.json:
-
-  #### Install Husky
-     ```shell
-     npm install --save-dev husky 
-     ```
-  #### Add your precommit script
-     ```json
-     "scripts": {
-       "precommit": "jest && node_modules/.bin/jest-badges-readme && git add 'README.md'"
-     }
-    ```
-
-  ##### git commit and push
-  Just use your workflow as usual. If your tests fail, no commit. If they pass, update the README.md and add the file to the commit. Nice!
