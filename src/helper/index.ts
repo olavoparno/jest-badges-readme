@@ -23,8 +23,9 @@ export default class Helper {
   
   public insertBadges = (path: string = badgeHashs.jsonCoverageFile): boolean => {
     let returnValue: boolean = false;
-    if (fs.existsSync(path)) {
-      const coverageFile = fs.readFileSync(path, 'utf8');
+    const coveragePath = this.getCoveragePath(path)
+    if (fs.existsSync(coveragePath)) {
+      const coverageFile = fs.readFileSync(coveragePath, 'utf8');
       if (!coverageFile.length) {
         console.log('\x1b[1m\x1b[31m', 'Malformed coverage report. Please run Jest again');
         return false;
@@ -73,6 +74,20 @@ export default class Helper {
       returnValue = false
     }
     return returnValue
+  }
+
+  private getCoveragePath = (path: string): string => {
+    let coveragePath = path;
+    const packageJson = require('../../package.json');
+    const jestConfig = require('../../jestconfig.json');
+
+    if (packageJson.jest && packageJson.jest.coverageDirectory) {
+      coveragePath = `${packageJson.jest.coverageDirectory.replace('<rootDir>', '.')}/coverage-summary.json`;
+    }
+    if (jestConfig && jestConfig.coverageDirectory) {
+      coveragePath = `${jestConfig.coverageDirectory.replace('<rootDir>', '.')}/coverage-summary.json`;
+    }
+    return coveragePath
   }
 
   private getBadge = (report: IReport, key: string): string => {

@@ -44,7 +44,7 @@
   "types": "lib/index.d.ts",
   "name": "@olavoparno/jest-badges-readme",
   "scripts": {
-    "test": "jest --config jestconfig.json && node lib/index.js || true",
+    "test": "jest --config jestconfig.json && node lib/index.js",
     "test:coverage": "npm run test --coverage",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
@@ -57,7 +57,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "version": "1.2.6",
+  "version": "1.2.7",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
