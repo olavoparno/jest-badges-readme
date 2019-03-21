@@ -43,7 +43,7 @@
 
   - When calling it from one of your project scripts inside your `package.json`:
   ```bash
-    jest-badges-readme --coverageDir='./my-custom-coverage-folder'"
+    jest-badges-readme --coverageDir='./my-custom-coverage-folder'
   ```
 
 ### Let's all get back to what Jest covers for us.
