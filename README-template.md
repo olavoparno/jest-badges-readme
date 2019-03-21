@@ -36,6 +36,7 @@
 - You are able to change your coverageDir if you wish. You can either use your `jest.config.js` or `jestconfig.json`, via the jest config node in your `package.json` or even passing in as an argument, see below:
 
   - `jestconfig.json` or `package.json` (this inside jest config node) example:
+  
   ```json
     "coverageDirectory": "./my-custom-coverage-folder"
   ```
