@@ -1,3 +1,3 @@
 export interface IReport {
-  [total: string]: any;
+  [total: string]: any
 }
