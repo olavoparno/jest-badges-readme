@@ -8,12 +8,15 @@
   "bin": {
     "jest-badges-readme": "lib/index.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "yargs": "^13.2.2"
+  },
   "deprecated": false,
   "description": "Creates a group of coverage badges from Jest into your README.",
   "devDependencies": {
     "@types/jest": "^23.3.13",
     "@types/node": "^10.12.21",
+    "@types/yargs": "^12.0.10",
     "jest": "^24.0.0",
     "prettier": "^1.16.3",
     "ts-jest": "^23.10.5",
@@ -45,6 +48,7 @@
   "name": "@olavoparno/jest-badges-readme",
   "scripts": {
     "test": "jest --config jestconfig.json && node lib/index.js",
+    "testArgs": "jest --config jestconfig.json && node lib/index.js --coverageDir='./src/'",
     "test:coverage": "npm run test --coverage",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
@@ -57,7 +61,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "version": "1.2.7",
+  "version": "1.2.8",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",

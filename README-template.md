@@ -33,6 +33,17 @@
     ]
   ```
 - Have a _*README-template.md*_ file created.
+- You are able to change your coverageDir if you wish. You can either use your `jest.config.js` or `jestconfig.json`, via the jest config node in your `package.json` or even passing in as an argument, see below:
+
+  - `jestconfig.json` or `package.json` (this inside jest config node) example:
+  ```json
+    "coverageDirectory": "./my-custom-coverage-folder"
+  ```
+
+  - When calling it from one of your project scripts inside your `package.json`:
+  ```bash
+    jest-badges-readme --coverageDir='./my-custom-coverage-folder'"
+  ```
 
 ### Let's all get back to what Jest covers for us.
 
@@ -85,3 +96,12 @@ Which results in in the report above!
     ```json
       "make-readme": "npm run test:coverage && jest-badges-readme"
     ```
+
+  - Using a different coverage folder passed as arguments
+
+    ```json
+      "make-readme": "npm run test:coverage && jest-badges-readme --coverageDir='./my-custom-coverage-folder'"
+    ```
+
+
+  
