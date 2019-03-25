@@ -61,7 +61,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "version": "1.2.8",
+  "version": "1.2.9",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
