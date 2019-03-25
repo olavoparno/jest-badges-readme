@@ -48,8 +48,9 @@ export default class Helper {
       })
       this.getBuildStatus()
     } else {
-      console.log('\x1b[1m\x1b[31m', 'Error: ' + coveragePath + ' file not found.')
-      console.log('\x1b[1m\x1b[32m', 'Do you have Jest installed? If so, is it properly configured?')
+      console.log('\x1b[1m\x1b[31m', 'Error: ' + coveragePath + ' file not found. Is it at the default location?')
+      console.log('\x1b[1m\x1b[33m', 'Do you have Jest installed? If so, is it properly configured? If you do, then run me')
+      console.log('\x1b[1m\x1b[33m', 'by passing args i.e. npm run jest-badges-readme --coverageDir=\'my-custom-coverage-folder\'')
       returnValue = false
     }
     return returnValue
@@ -81,26 +82,12 @@ export default class Helper {
   private getCoveragePath = (path: string): string => {
     let coveragePath: string = path
     const args = yargs('coverageDir', {}).argv
+
     if (args.coverageDir && (args.coverageDir as string).length > 0) {
       coveragePath = `${args.coverageDir as string}/coverage-summary.json`
       return coveragePath
     }
 
-    let jestConfig
-    const packageJson = require('../../package.json')
-    
-    if (fs.existsSync('./jestconfig.json')) {
-      jestConfig = require('../../jestconfig.json')
-    } else if (fs.existsSync('./jest.config.js')) {
-      jestConfig = require('../../jest.config.js')
-    }
-
-    if (packageJson.jest && packageJson.jest.coverageDirectory) {
-      coveragePath = `${packageJson.jest.coverageDirectory.replace('<rootDir>', '.')}/coverage-summary.json`
-    }
-    if (jestConfig && jestConfig.coverageDirectory) {
-      coveragePath = `${jestConfig.coverageDirectory.replace('<rootDir>', '.')}/coverage-summary.json`
-    }
     return coveragePath
   }
 
