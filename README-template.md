@@ -1,14 +1,13 @@
-# Jest Badges Readme
+# [Jest Badges Readme](https://www.npmjs.com/package/@olavoparno/jest-badges-readme) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/olavoparno/jest-badges-readme/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@olavoparno/jest-badges-readme.svg?style=flat)](https://www.npmjs.com/package/@olavoparno/jest-badges-readme) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
 
-### Creates Jest Coverage badges for your README.md file.
-
-| Statements | Branches | Functions | Lines | Build Status | Built By | We Love |
-| -----------|----------|-----------|-------| ------------ | -------- | ------- |
-| ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") | ![BuildStatus](#buildstatus# "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+| Statements | Branches | Functions | Lines | Build Status |
+| -----------|----------|-----------|-------| ------------ |
+| ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") | ![BuildStatus](#buildstatus# "Building Status") |
+### Creates Jest Coverage badges for your README.md file
 
 ### TL;DR
 
-- To be short, all it does is: **Creates your README.md dinamically with your Jest Coverage Badges on top of your README-template.md file.**
+- To be short, all it does is: **Creates your README.md dynamically with your Jest Coverage Badges based on your README-template.md file**
 
 ### Installation
 
@@ -22,80 +21,96 @@
     npm i @olavoparno/jest-badges-readme --save-dev
   ```
 
-### Requirements (it's taken for granted that you'll meet those). Also please be working with any project running Jest.
+### Configuration and requirements
 
-- Minor adendum: you must have your Jest configured  with the property _*coverageReporters*_ properly setup. e.g.:
-  ```js
-    "coverageReporters": [
-      "json-summary",
-      "text",
-      "lcov"
-    ]
-  ```
-- Have a _*README-template.md*_ file created.
-- You are able to change your coverageDir if you wish. You have to explicitly pass in as an argument, see below:
+  1. Have Jest installed and with its Coverage Reporting configuration as below
   
-  ```bash
-    jest-badges-readme --coverageDir='./my-custom-coverage-folder'
+  - It may be set inside your Jest config within `package.json` or inside your jest config file i.e. `jest.config.js` or `jestconfig.json`
+
+    ```js
+      "coverageReporters": [
+        "json-summary",
+        "text",
+        "lcov"
+      ]
+    ```
+  
+  2. Have a _*README-template.md*_ file created with the following template (please do feel free to change its presentation structure, e.g. in a table or not)
+
+  ```md
+  | Statements | Branches | Functions | Lines |
+  | -----------|----------|-----------|-------|
+  | ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") |
   ```
 
-### Let's all get back to what Jest covers for us.
-
-- % Stmts (which states for Statements).
-- % Branch (pretty self explanatory).
-- % Functions (won't repeat myself).
-- % Lines (last but not least).
-
-#### This tool will create badge URLs for these former 4 items into your _*README-template.md*_ if you follow the next steps:
-
-- Open up your _*README-template.md*_ and add 4 _*markers*_ inside it respectively for each Jest coverage items. These _*markers*_ would be as follows:
-  1. '#statements#'
-  2. '#branches#'
-  3. '#functions#'
-  4. '#lines#'
-
-### Are you in need of a local building badge? Add these NPM scripts in order to manage your local building badges as well:
-
-```json
-  "prebuild": "echo nok > .buildstatus",
-  "postbuild": "echo ok > .buildstatus"
-```
-
-- Add one more marker like this:
-  1. '#buildstatus#'
-- This is going to create a file called _*.buildstatus*_ in your root project telling this tool if your build is successful or not with either *ok* or *nok*. Simply put.
-
-Example of _*README-template.md*_:
-
-```md
-| Statements | Branches | Functions | Lines | Build Status | Built By | We Love |
-| -----------|----------|-----------|-------| ------------ | -------- | ------- |
-| ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") | ![BuildStatus](#buildstatus# "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
-```
-
-Which results in in the report above!
-
-### Summarizing it all
-
-  #### Create a NPM Script as the example:
-  - For locally installed library:
+  3. Call if from your terminal or from your NPM/YARN Scripts
+ 
+  - For locally installed library
 
     ```json
-      "make-badges": "node_modules/.bin/jest-badges-readme || true",
-      "make-readme": "npm run test:coverage && npm run make-badges"
+      "make-badges": "node_modules/.bin/jest-badges-readme"
     ```
 
-  - For globally installed library:
+  - For globally installed library
 
     ```json
-      "make-readme": "npm run test:coverage && jest-badges-readme"
+      "make-badges": "npm run jest-badges-readme"
     ```
 
-  - Using a different coverage folder passed as arguments
+  - You may also provide a different coverage folder path passed as arguments
 
     ```json
-      "make-readme": "npm run test:coverage && jest-badges-readme --coverageDir='./my-custom-coverage-folder'"
+      "make-badges": "npm run jest-badges-readme --coverageDir='./my-custom-coverage-folder'"
     ```
+
+  - And finally via the very terminal
+
+    ```bash
+      jest-badges-readme --coverageDir='./my-custom-coverage-folder'
+    ```
+
+### Short summary onto what Jest and Jest Badges Readme covers for us
+
+  - % Stmts (which states for Statements)
+  - % Branch (pretty self explanatory)
+  - % Functions (won't repeat myself)
+  - % Lines (last but not least)
+
+#### This library will create badges URLs for these former 4 items into your _*README-template.md*_ if you followed the previous steps
+
+  - Open up your _*README-template.md*_ and add 4 _*markers*_ inside it for each Jest coverage item respectively. These _*markers*_ must be as follows:
+
+    1. '#statements#'
+    2. '#branches#'
+    3. '#functions#'
+    4. '#lines#'
+
+#### If you feel you might need a local building badge indicator, add these NPM scripts in order to manage your local building badge as well
+
+  ```json
+    "prebuild": "echo nok > .buildstatus",
+    "postbuild": "echo ok > .buildstatus"
+  ```
+
+  - Add one more marker like the example below. This is going to create a file called _*.buildstatus*_ in your project's root telling this library if your build is either successful or a failure
+    1. '#buildstatus#'
+  
+#### Example of _*README-template.md*_ with building status too
+
+  ```md
+  | Statements | Branches | Functions | Lines | Build Status |
+  | -----------|----------|-----------|-------| ------------ |
+  | ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") | ![BuildStatus](#buildstatus# "Building Status") |
+  ```
+
+### Contributing
+
+The purpose of this library is to motivate developers to constantly write a solid documentation and testing. A complete and nice looking documentation is key to a successful development and code maintainability.
+Please feel free to open any issues you might come up with and to submit your own PRs. There is not a contributing guide yet
+
+### License
+
+Jest Badges Readme is [MIT licensed](./LICENSE).
 
 
   
