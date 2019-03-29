@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+import yargs from 'yargs'
 
 import Creator from '../helper'
 
@@ -84,5 +85,15 @@ describe('Badge Maker', () => {
     afterAll(() => {
       creator.createReadme(readmeTemplateFile)
     })
+  })
+  describe('Testing with arguments', () => {
+    beforeAll(() => {
+      process.argv.push('--coverageDir="./coverage"')
+    })
+    test('checks for different coverageDirectory as args', () => {
+      if (creator.createReadme()) {
+        expect(creator.insertBadges()).toBeFalsy()
+      }
+    });
   })
 });

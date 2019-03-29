@@ -1,5 +1,4 @@
 import * as fs from 'fs'
-import yargs from 'yargs'
 
 import { badgeHashs } from './constants'
 import { IReport } from './interface'
@@ -81,11 +80,19 @@ export default class Helper {
 
   private getCoveragePath = (path: string): string => {
     let coveragePath: string = path
-    const args = yargs('coverageDir', {}).argv
+    let argPath: string = ''
+    const args = process.argv.filter((item) => {
+      if (item.indexOf('coverage') >= 0) { 
+        return item 
+      } 
+    }).toString()
 
-    if (args.coverageDir && (args.coverageDir as string).length > 0) {
-      coveragePath = `${args.coverageDir as string}/coverage-summary.json`
-      return coveragePath
+    if (args) {      
+      argPath = args.replace('--coverageDir=', '')
+    } 
+
+    if (argPath && args.length > 0) {
+      coveragePath = `${argPath}/coverage-summary.json`
     }
 
     return coveragePath
