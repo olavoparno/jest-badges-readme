@@ -1,9 +1,12 @@
-# [Jest Badges Readme](https://www.npmjs.com/package/@olavoparno/jest-badges-readme) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/olavoparno/jest-badges-readme/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@olavoparno/jest-badges-readme.svg?style=flat)](https://www.npmjs.com/package/@olavoparno/jest-badges-readme) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+# [Jest Badges Readme](https://www.npmjs.com/package/@olavoparno/jest-badges-readme)
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/olavoparno/jest-badges-readme/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@olavoparno/jest-badges-readme.svg?style=flat)](https://www.npmjs.com/package/@olavoparno/jest-badges-readme) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+
+### Creates Jest Coverage badges for your README.md file
 
 | Statements | Branches | Functions | Lines | Build Status |
 | -----------|----------|-----------|-------| ------------ |
 | ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") | ![BuildStatus](#buildstatus# "Building Status") |
-### Creates Jest Coverage badges for your README.md file
 
 ### TL;DR
 
