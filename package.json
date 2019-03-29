@@ -5,21 +5,30 @@
     "email": "olavoparno@gmail.com",
     "url": "https://github.com/olavoparno"
   },
+  "description": "Creates a group of coverage badges from Jest into your README.",
+  "version": "1.3.2",
+  "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/olavoparno/jest-badges-readme.git"
+  },
   "bin": {
     "jest-badges-readme": "lib/index.js"
   },
-  "dependencies": {},
-  "deprecated": false,
-  "description": "Creates a group of coverage badges from Jest into your README.",
-  "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/node": "^11.12.0",
-    "jest": "^24.5.0",
-    "prettier": "^1.16.4",
-    "ts-jest": "^24.0.0",
-    "tslint": "^5.14.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.3.4000"
+  "scripts": {
+    "test": "jest --config jestconfig.json && node lib/index.js",
+    "testArgs": "jest --config jestconfig.json && node lib/index.js --coverageDir='./src/'",
+    "test:coverage": "npm run test --coverage",
+    "prebuild": "echo nok > .buildstatus",
+    "postbuild": "echo ok > .buildstatus",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "engines": {
     "node": ">=6.11",
@@ -43,25 +52,16 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "name": "@olavoparno/jest-badges-readme",
-  "scripts": {
-    "test": "jest --config jestconfig.json && node lib/index.js",
-    "testArgs": "jest --config jestconfig.json && node lib/index.js --coverageDir='./src/'",
-    "test:coverage": "npm run test --coverage",
-    "prebuild": "echo nok > .buildstatus",
-    "postbuild": "echo ok > .buildstatus",
-    "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
-  "version": "1.3.1",
-  "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/olavoparno/jest-badges-readme.git"
+  "dependencies": {},
+  "deprecated": false,
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.12.0",
+    "jest": "^24.5.0",
+    "prettier": "^1.16.4",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.4000"
   }
 }
