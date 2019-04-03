@@ -119,8 +119,10 @@
   2. Add your precommit script
     
   ```json
-    "scripts": {
-      "precommit": "jest && node_modules/.bin/jest-badges-readme && git add 'README.md'"
+    "husky": {
+      "hooks": {
+        "pre-commit": "jest && node_modules/.bin/jest-badges-readme && git add 'README.md'"
+      }
     }
   ```
 
