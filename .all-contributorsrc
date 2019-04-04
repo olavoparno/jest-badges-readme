@@ -1,0 +1,14 @@
+{
+  "projectName": "jest-badges-readme",
+  "projectOwner": "olavoparno",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md",
+    "README-template.md"
+  ],
+  "imageSize": 70,
+  "commit": false,
+  "contributors": [],
+  "contributorsPerLine": 7
+}
