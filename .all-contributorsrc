@@ -20,6 +20,17 @@
         "bug",
         "content"
       ]
+    },
+    {
+      "login": "olavoparno",
+      "name": "Olavo Parno",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7513162?v=4",
+      "profile": "https://olavoparno.github.io",
+      "contributions": [
+        "ideas",
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7
