@@ -11,6 +11,17 @@
   "commit": false,
   "contributors": [
     {
+      "login": "nothingismagick",
+      "name": "nothingismagick",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/35242872?v=4",
+      "profile": "https://github.com/nothingismagick",
+      "contributions": [
+        "ideas",
+        "bug",
+        "content"
+      ]
+    },
+    {
       "login": "olavoparno",
       "name": "Olavo Parno",
       "avatar_url": "https://avatars1.githubusercontent.com/u/7513162?v=4",
