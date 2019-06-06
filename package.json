@@ -6,7 +6,7 @@
     "url": "https://github.com/olavoparno"
   },
   "description": "Creates a group of coverage badges from Jest into your README.",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
