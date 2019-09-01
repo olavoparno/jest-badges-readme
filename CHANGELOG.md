@@ -2,15 +2,27 @@
 
 
 
-## [1.3.5](https://github.com/olavoparno/jest-badges-readme/compare/1.3.4...1.3.5) (2019-06-06)
+## [1.3.5](https://github.com/olavoparno/jest-badges-readme/compare/1.3.4...v1.3.5) (2019-06-06)
 
 
 
-## [1.3.3](https://github.com/olavoparno/jest-badges-readme/compare/1.3.4...1.3.3) (2019-04-05)
+## [1.3.4](https://github.com/olavoparno/jest-badges-readme/compare/1.3.3...1.3.4) (2019-04-05)
 
 
 
-## [1.3.4](https://github.com/olavoparno/jest-badges-readme/compare/1.2.9...1.3.4) (2019-04-05)
+## [1.3.3](https://github.com/olavoparno/jest-badges-readme/compare/1.3.2...1.3.3) (2019-04-03)
+
+
+
+## [1.3.2](https://github.com/olavoparno/jest-badges-readme/compare/1.3.1...1.3.2) (2019-03-29)
+
+
+
+## [1.3.1](https://github.com/olavoparno/jest-badges-readme/compare/1.3.0...1.3.1) (2019-03-29)
+
+
+
+# [1.3.0](https://github.com/olavoparno/jest-badges-readme/compare/1.2.9...1.3.0) (2019-03-25)
 
 
 
