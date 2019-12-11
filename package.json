@@ -60,15 +60,15 @@
   "dependencies": {},
   "deprecated": false,
   "devDependencies": {
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.3",
-    "conventional-changelog-cli": "^2.0.23",
-    "husky": "^3.0.5",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.17",
+    "conventional-changelog-cli": "^2.0.28",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
-    "prettier": "^1.18.2",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.19.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.7.3"
   }
 }
