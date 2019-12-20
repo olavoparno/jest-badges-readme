@@ -2,3 +2,6 @@
 coverage/
 node_modules/
 lib/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
