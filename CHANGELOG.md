@@ -1,3 +1,7 @@
+## [1.4.1](https://github.com/olavoparno/jest-badges-readme/compare/v1.4.0...v1.4.1) (2020-02-13)
+
+
+
 # [1.4.0](https://github.com/olavoparno/jest-badges-readme/compare/v1.3.8...v1.4.0) (2019-12-20)
 
 
