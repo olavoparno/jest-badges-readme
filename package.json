@@ -22,7 +22,7 @@
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
     "build": "microbundle",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
@@ -60,16 +60,16 @@
   "dependencies": {},
   "deprecated": false,
   "devDependencies": {
-    "@types/jest": "^25.1.2",
-    "@types/node": "^13.7.1",
-    "conventional-changelog-cli": "^2.0.31",
-    "husky": "^4.2.3",
-    "jest": "^25.1.0",
-    "microbundle": "^0.12.0-next.8",
-    "prettier": "^1.19.1",
-    "ts-jest": "^25.2.0",
-    "tslint": "^6.0.0",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.0.13",
+    "conventional-changelog-cli": "^2.0.34",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "microbundle": "^0.12.1",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.0",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.9.5"
   }
 }
