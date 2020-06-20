@@ -33,7 +33,7 @@ export default class Helper {
       console.log('\x1b[1m\x1b[32m', `Reading coverage file from ${coveragePath}`);
       const report: IReport = JSON.parse(coverageFile);
       let readmeFileData: string = fs.readFileSync(readmeFile, 'utf8');
-      this.reportKeys.forEach(key => {
+      this.reportKeys.forEach((key) => {
         const url: string = this.getBadge(report, key);
         if (url.length) {
           const pattern: string = '#' + key + '#';
@@ -88,7 +88,7 @@ export default class Helper {
     let coveragePath: string = path;
     let argPath: string = '';
     const args = process.argv
-      .filter(item => {
+      .filter((item) => {
         if (item.indexOf('coverage') >= 0) {
           return item;
         }
