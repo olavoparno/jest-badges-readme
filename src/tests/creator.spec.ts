@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import yargs from 'yargs';
 
 import Creator from '../helper';
 
@@ -14,11 +13,18 @@ let fakeCoverageLowValue: string;
 let trueBuildStatus: string;
 let falseBuildStatus: string;
 let fakeBuildStatus: string;
-const reportKeys = ['lines', 'statements', 'functions', 'branches'];
+const reportKeys = [
+  { key: 'branches', value: '![Branches]' },
+  { key: 'functions', value: '![Functions]' },
+  { key: 'lines', value: '![Lines]' },
+  { key: 'statements', value: '![Statements]' },
+];
 
 describe('Badge Maker', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     creator = new Creator();
+  })
+  beforeAll(() => {
     readmeFile = './README.md';
     readmeTemplateFile = './README-template.md';
     fakeReadMeFile = './FAKEREADME.md';
@@ -30,12 +36,13 @@ describe('Badge Maker', () => {
     falseBuildStatus = 'src/tests/mock/.falseBuildStatus';
     fakeBuildStatus = './.FAKEBUILD';
   });
-  test('checks README.md file creation', () => {
+  test('checks README.md from template file creation', () => {
     expect(creator.createReadme(readmeTemplateFile)).toBeTruthy();
     expect(fs.existsSync(readmeFile)).toBeTruthy();
   });
-  test('checks README.md file creation failure', () => {
-    expect(creator.createReadme(fakeReadMeFile)).toBeFalsy();
+  test('checks README.md from readme file creation', () => {
+    expect(creator.createReadme()).toBeTruthy();
+    expect(fs.existsSync(readmeFile)).toBeTruthy();
   });
   test('calls insertBadges', () => {
     if (creator.createReadme()) {
@@ -63,12 +70,12 @@ describe('Badge Maker', () => {
     }
   });
   test('checks if all lines were updated', () => {
-    reportKeys.forEach((key: string) => {
-      fs.readFile(readmeFile, (err, data) => {
-        if (err) {
-          throw err;
-        }
-        expect(data.indexOf(key)).toBeGreaterThan(0);
+    fs.readFile(readmeFile, (err, data) => {
+      if (err) {
+        throw err;
+      }
+      reportKeys.forEach((reportKey: Record<string, string>) => {
+        expect(data.indexOf(reportKey.key)).toBeGreaterThan(0);
       });
     });
   });
@@ -83,7 +90,7 @@ describe('Badge Maker', () => {
       expect(creator.getBuildStatus(trueBuildStatus)).toBeTruthy();
     });
     afterAll(() => {
-      creator.createReadme(readmeTemplateFile);
+      creator.createReadme();
     });
   });
   describe('Testing with arguments', () => {

@@ -7,18 +7,24 @@ const readmeFile: string = badgeHashs.readmeFile;
 const readmeTemplateFile: string = badgeHashs.readmeTemplateFile;
 
 export default class Helper {
-  private reportKeys: string[] = badgeHashs.hashes.jest;
+  private reportKeys: Record<string, string>[] = badgeHashs.hashes.jest;
 
   public createReadme = (path: string = readmeTemplateFile): boolean => {
     if (fs.existsSync(path)) {
       fs.copyFileSync(path, readmeFile);
       console.log('\x1b[1m\x1b[32m', `Template read succesfully. ${readmeFile} created!`);
       return true;
-    } else {
-      console.log('\x1b[1m\x1b[31m', `Error: ${readmeTemplateFile} file not not found.`);
-      console.log('\x1b[1m\x1b[32m', `You must have a ${readmeTemplateFile} created. Please read the documentation.`);
-      return false;
     }
+    if (fs.existsSync(readmeFile)) {
+      console.log('\x1b[1m\x1b[32m', `Readme read succesfully. ${readmeFile} will be used accordingly!`);
+      return true;
+    }
+    console.log('\x1b[1m\x1b[31m', `Error: ${readmeTemplateFile} OR ${readmeFile} files were not found.`);
+    console.log(
+      '\x1b[1m\x1b[32m',
+      `You must have a ${readmeTemplateFile} OR a valid ${readmeFile} file created. Please read the documentation.`,
+    );
+    return false;
   };
 
   public insertBadges = (path: string = badgeHashs.jsonCoverageFile): boolean => {
@@ -33,14 +39,23 @@ export default class Helper {
       console.log('\x1b[1m\x1b[32m', `Reading coverage file from ${coveragePath}`);
       const report: IReport = JSON.parse(coverageFile);
       let readmeFileData: string = fs.readFileSync(readmeFile, 'utf8');
-      this.reportKeys.forEach((key) => {
-        const url: string = this.getBadge(report, key);
+      this.reportKeys.forEach((reportKey) => {
+        const url: string = this.getBadge(report, reportKey.key);
         if (url.length) {
-          const pattern: string = '#' + key + '#';
-          readmeFileData = readmeFileData.replace(pattern, url);
-          console.log('\x1b[1m\x1b[32m', 'Badge for', key, 'updated with:', url);
+          const pattern: string = reportKey.value;
+
+          const startIndex = readmeFileData.indexOf(pattern);
+          const valueToChangeStart = readmeFileData.slice(startIndex + pattern.length + 1);
+
+          const valueToChangeIndex = valueToChangeStart.indexOf(')');
+          const valueToChangeFinal = valueToChangeStart.substring(0, valueToChangeIndex);
+
+          readmeFileData = readmeFileData.replace(valueToChangeFinal, `${url} "Make me better!"`);
+          console.log('\x1b[1m\x1b[32m', 'Badge for', reportKey.key, 'updated with:', url);
           returnValue = true;
-          fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
+          setTimeout(() => {
+            fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
+          }, 100)
         } else {
           returnValue = false;
         }
@@ -64,7 +79,7 @@ export default class Helper {
   public getBuildStatus = (path: string = badgeHashs.buildFile): boolean => {
     let url: string = badgeHashs.getBuildUrl('Build', 'Passing', 'brightgreen');
     let returnValue: boolean = false;
-    const pattern: string = `#${badgeHashs.hashes.build}#`;
+    const pattern: string = `#${badgeHashs.hashes.build.value}#`;
     if (fs.existsSync(path)) {
       let readmeFileData = fs.readFileSync(readmeFile, 'utf8');
       const buildStatus = fs.readFileSync(path, 'utf8');
