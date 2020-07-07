@@ -55,7 +55,7 @@ export default class Helper {
           returnValue = true;
           setTimeout(() => {
             fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
-          }, 100)
+          }, 100);
         } else {
           returnValue = false;
         }

@@ -23,7 +23,7 @@ const reportKeys = [
 describe('Badge Maker', () => {
   beforeEach(() => {
     creator = new Creator();
-  })
+  });
   beforeAll(() => {
     readmeFile = './README.md';
     readmeTemplateFile = './README-template.md';

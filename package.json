@@ -6,7 +6,7 @@
     "url": "https://github.com/olavoparno"
   },
   "description": "Creates a group of coverage badges from Jest into your README.",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "homepage": "https://github.com/olavoparno/jest-badges-readme#readme",
   "repository": {
     "type": "git",
@@ -15,7 +15,9 @@
   "bin": {
     "jest-badges-readme": "lib/index.js"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "test": "jest --config jestconfig.json && node lib/index.js",
     "testArgs": "jest --config jestconfig.json && node lib/index.js --coverageDir='./src/'",
