@@ -15,9 +15,6 @@
   "bin": {
     "jest-badges-readme": "lib/index.js"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {
     "test": "jest --config jestconfig.json && node lib/index.js",
     "testArgs": "jest --config jestconfig.json && node lib/index.js --coverageDir='./src/'",

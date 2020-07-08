@@ -12,18 +12,15 @@ export default class Helper {
   public createReadme = (path: string = readmeTemplateFile): boolean => {
     if (fs.existsSync(path)) {
       fs.copyFileSync(path, readmeFile);
-      console.log('\x1b[1m\x1b[32m', `Template read succesfully. ${readmeFile} created!`);
+      console.log(`Template read succesfully. ${readmeFile} created!`);
       return true;
     }
     if (fs.existsSync(readmeFile)) {
-      console.log('\x1b[1m\x1b[32m', `Readme read succesfully. ${readmeFile} will be used accordingly!`);
+      console.log(`Readme read succesfully. ${readmeFile} will be used accordingly!`);
       return true;
     }
-    console.log('\x1b[1m\x1b[31m', `Error: ${readmeTemplateFile} OR ${readmeFile} files were not found.`);
-    console.log(
-      '\x1b[1m\x1b[32m',
-      `You must have a ${readmeTemplateFile} OR a valid ${readmeFile} file created. Please read the documentation.`,
-    );
+    console.log(`Error: ${readmeTemplateFile} OR ${readmeFile} files were not found.`);
+    console.log(`You must have a ${readmeTemplateFile} OR a valid ${readmeFile} file created. Please read the documentation.`);
     return false;
   };
 
@@ -33,12 +30,13 @@ export default class Helper {
     if (fs.existsSync(coveragePath)) {
       const coverageFile = fs.readFileSync(coveragePath, 'utf8');
       if (!coverageFile.length) {
-        console.log('\x1b[1m\x1b[31m', 'Malformed coverage report. Please run Jest again');
+        console.log('Malformed coverage report. Please run Jest again');
         return false;
       }
-      console.log('\x1b[1m\x1b[32m', `Reading coverage file from ${coveragePath}`);
+      console.log(`Reading coverage file from ${coveragePath}`);
       const report: IReport = JSON.parse(coverageFile);
       let readmeFileData: string = fs.readFileSync(readmeFile, 'utf8');
+      let hadChange = 0;
       this.reportKeys.forEach((reportKey) => {
         const url: string = this.getBadge(report, reportKey.key);
         if (url.length) {
@@ -49,28 +47,31 @@ export default class Helper {
 
           const valueToChangeIndex = valueToChangeStart.indexOf(')');
           const valueToChangeFinal = valueToChangeStart.substring(0, valueToChangeIndex);
+          
+          const newUrl = `${url} "Make me better!"`;
+          const isItTheSame = valueToChangeFinal.localeCompare(newUrl);
 
-          readmeFileData = readmeFileData.replace(valueToChangeFinal, `${url} "Make me better!"`);
-          console.log('\x1b[1m\x1b[32m', 'Badge for', reportKey.key, 'updated with:', url);
+          readmeFileData = readmeFileData.replace(valueToChangeFinal, newUrl);
+
+          if (isItTheSame !== 0) {
+            console.log(`Badge for ${reportKey.key} updated with: ${url}`);
+            hadChange = 1;
+          }
+
           returnValue = true;
-          setTimeout(() => {
-            fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
-          }, 100);
+          fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
         } else {
           returnValue = false;
         }
       });
+      if (hadChange === 0) {
+        console.log('No update on coverage!');
+      }
       this.getBuildStatus();
     } else {
-      console.log('\x1b[1m\x1b[31m', 'Error: ' + coveragePath + ' file not found. Is it at the default location?');
-      console.log(
-        '\x1b[1m\x1b[33m',
-        'Do you have Jest installed? If so, is it properly configured? If you do, then run me',
-      );
-      console.log(
-        '\x1b[1m\x1b[33m',
-        "by passing args i.e. npm run jest-badges-readme --coverageDir='my-custom-coverage-folder'",
-      );
+      console.log(`Error: ${coveragePath} file not found. Is it at the default location?`);
+      console.log('Do you have Jest installed? If so, is it properly configured? If you do, then run me');
+      console.log("by passing args i.e. npm run jest-badges-readme --coverageDir='my-custom-coverage-folder'");
       returnValue = false;
     }
     return returnValue;
@@ -79,7 +80,7 @@ export default class Helper {
   public getBuildStatus = (path: string = badgeHashs.buildFile): boolean => {
     let url: string = badgeHashs.getBuildUrl('Build', 'Passing', 'brightgreen');
     let returnValue: boolean = false;
-    const pattern: string = `#${badgeHashs.hashes.build.value}#`;
+    const pattern: string = badgeHashs.hashes.build.value;
     if (fs.existsSync(path)) {
       let readmeFileData = fs.readFileSync(readmeFile, 'utf8');
       const buildStatus = fs.readFileSync(path, 'utf8');
@@ -90,9 +91,19 @@ export default class Helper {
         url = badgeHashs.getBuildUrl('Build', 'Failing', 'brightred');
         returnValue = false;
       }
-      readmeFileData = readmeFileData.replace(pattern, url);
+
+      const startIndex = readmeFileData.indexOf(pattern);
+      const valueToChangeStart = readmeFileData.slice(startIndex + pattern.length + 1);
+
+      const valueToChangeIndex = valueToChangeStart.indexOf(')');
+      const valueToChangeFinal = valueToChangeStart.substring(0, valueToChangeIndex);
+      
+      const newUrl = `${url} "Building Status"`;
+
+      readmeFileData = readmeFileData.replace(valueToChangeFinal, newUrl);
+
       fs.writeFileSync(readmeFile, readmeFileData, 'utf8');
-      console.log('\x1b[1m\x1b[32m', 'Writing building status', buildStatus, 'with URL:', url);
+      console.log(`Writing building status ${buildStatus}`);
     } else {
       returnValue = false;
     }
@@ -123,7 +134,7 @@ export default class Helper {
 
   private getBadge = (report: IReport, key: string): string => {
     if (!(report && report.total && report.total[key])) {
-      console.log('\x1b[1m\x1b[31m', 'Malformed coverage report for the key ' + key + '. Please run Jest again.');
+      console.log(`Malformed coverage report for the key ${key}. Please run Jest again.`);
       return '';
     }
     const coverage: number = report.total[key].pct;
