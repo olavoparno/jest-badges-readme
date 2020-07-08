@@ -20,7 +20,9 @@ export default class Helper {
       return true;
     }
     console.log(`Error: ${readmeTemplateFile} OR ${readmeFile} files were not found.`);
-    console.log(`You must have a ${readmeTemplateFile} OR a valid ${readmeFile} file created. Please read the documentation.`);
+    console.log(
+      `You must have a ${readmeTemplateFile} OR a valid ${readmeFile} file created. Please read the documentation.`,
+    );
     return false;
   };
 
@@ -47,7 +49,7 @@ export default class Helper {
 
           const valueToChangeIndex = valueToChangeStart.indexOf(')');
           const valueToChangeFinal = valueToChangeStart.substring(0, valueToChangeIndex);
-          
+
           const newUrl = `${url} "Make me better!"`;
           const isItTheSame = valueToChangeFinal.localeCompare(newUrl);
 
@@ -97,7 +99,7 @@ export default class Helper {
 
       const valueToChangeIndex = valueToChangeStart.indexOf(')');
       const valueToChangeFinal = valueToChangeStart.substring(0, valueToChangeIndex);
-      
+
       const newUrl = `${url} "Building Status"`;
 
       readmeFileData = readmeFileData.replace(valueToChangeFinal, newUrl);

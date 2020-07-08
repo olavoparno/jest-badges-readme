@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/olavoparno/jest-badges-readme/compare/v1.5.0...v1.6.0) (2020-07-08)
+
+
+### Bug Fixes
+
+* **project:** remove logging color and updates ([831db61](https://github.com/olavoparno/jest-badges-readme/commit/831db610a54a9a0825da324a4db86a96aa4c1c04))
+
+
+
 # [1.5.0](https://github.com/olavoparno/jest-badges-readme/compare/v1.4.2...v1.5.0) (2020-07-07)
 
 
