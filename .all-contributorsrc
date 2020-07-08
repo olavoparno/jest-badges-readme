@@ -39,7 +39,18 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "zaggino",
+      "name": "Martin Zagora",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1067319?v=4",
+      "profile": "http://twitter.com/zaggino",
+      "contributions": [
+        "ideas",
+        "bug"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
