@@ -1,11 +1,14 @@
-# [1.6.0](https://github.com/olavoparno/jest-badges-readme/compare/v1.5.0...v1.6.0) (2020-07-08)
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.5.1](https://github.com/olavoparno/jest-badges-readme/compare/v1.5.0...v1.5.1) (2020-07-08)
 
 
 ### Bug Fixes
 
+* **project:** remove logging color and updates ([9470344](https://github.com/olavoparno/jest-badges-readme/commit/947034406aeda2215b88a7f54ea3e89f46b05bc6))
 * **project:** remove logging color and updates ([831db61](https://github.com/olavoparno/jest-badges-readme/commit/831db610a54a9a0825da324a4db86a96aa4c1c04))
-
-
 
 # [1.5.0](https://github.com/olavoparno/jest-badges-readme/compare/v1.4.2...v1.5.0) (2020-07-07)
 
@@ -97,6 +100,3 @@
 ### Features
 
 * **project:** add error handling ([f533869](https://github.com/olavoparno/jest-badges-readme/commit/f533869))
-
-
-
