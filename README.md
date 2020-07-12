@@ -35,7 +35,6 @@
     ```js
       "coverageReporters": [
         "json-summary",
-        "text",
         "lcov"
       ]
     ```
@@ -160,6 +159,10 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 ### License
 
 Jest Badges Readme is [MIT licensed](./LICENSE).
+
+<div style="display: none; visibility: hidden; opacity: 0;">
+  <img height=0 width=0 style="display: none; visibility: hidden; opacity: 0;" src="http://hits.dwyl.com/olavoparno/jest-badges-readme.svg" />
+</div>
 
 
   
