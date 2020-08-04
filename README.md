@@ -1,3 +1,9 @@
+# Deprecated
+
+## Please use [istanbul-badges-readme](https://www.npmjs.com/package/istanbul-badges-readme) instead.
+## The usage has not changed at all, it has only been made simpler and **hopefully** bug free.
+
+
 <img align="right" width="200" src="https://github.com/olavoparno/olavoparno.github.io/raw/master/images/jest-badges-readme-logo4.png" />
 
 # [Jest Badges Readme](https://www.npmjs.com/package/@olavoparno/jest-badges-readme)
